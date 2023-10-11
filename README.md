@@ -4,3 +4,4 @@
 
 #####  :pushpin: Content by weeks: 
 ###### :one: Hello World
+###### :two: Variable types. Bitwise operators
