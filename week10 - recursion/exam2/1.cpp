@@ -43,13 +43,33 @@ void findDiagonalOrder(int *result, int **dArr, int *dArrLengths, int size)
 
 int main()
 {
-    int arr1[] = {1, 2, 3, 4, 5},
-        arr2[] = {6, 7}, arr3[] = {8}, arr4[] = {9, 10, 11}, arr5[] = {12, 13, 14, 15, 16};
-    int *dArr[] = {arr1, arr2, arr3, arr4, arr5}, dArrLengths[] = {5, 2, 1, 3, 5}, size = sizeof(dArrLengths) / sizeof(dArrLengths[0]);
-    const int TOTAL_ITEMS = 5 + 2 + 1 + 3 + 5;
-    int result[TOTAL_ITEMS] = {0};
-    findDiagonalOrder(result, dArr, dArrLengths, size);
-    for (size_t i = 0; i < TOTAL_ITEMS; i++)
+    // int arr1[] = {1, 2, 3, 4, 5},
+    //     arr2[] = {6, 7}, arr3[] = {8}, arr4[] = {9, 10, 11}, arr5[] = {12, 13, 14, 15, 16};
+    // int *dArr[] = {arr1, arr2, arr3, arr4, arr5}, dArrLengths[] = {5, 2, 1, 3, 5}, size = sizeof(dArrLengths) / sizeof(dArrLengths[0]);
+    // const int totalItems = 5 + 2 + 1 + 3 + 5;
+    // int result[totalItems] = {0};
+
+    int dArrSize = 0;
+    std::cin >> dArrSize;
+    int **dArr = new int *[dArrSize];
+    int *dArrElSizes = new int[dArrSize];
+    int totalItems = 0;
+    for (size_t i = 0; i < dArrSize; i++)
+    {
+        int cols = 0;
+        std::cin >> cols;
+        dArrElSizes[i] = cols;
+        dArr[i] = new int[cols];
+        totalItems += cols;
+        for (size_t j = 0; j < cols; j++)
+        {
+            std::cin >> dArr[i][j];
+        }
+    }
+    int *result = new int[totalItems];
+
+    findDiagonalOrder(result, dArr, dArrElSizes, dArrSize);
+    for (size_t i = 0; i < totalItems; i++)
     {
         std::cout << result[i] << ' ';
     }
